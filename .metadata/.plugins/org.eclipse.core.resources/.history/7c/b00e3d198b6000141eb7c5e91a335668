@@ -1,0 +1,13 @@
+import java.util.*;
+public class Game {
+	private String gameName;
+	private ArrayList<Integer> scores;
+	public Game(String gameName) {
+		this.gameName = gameName;
+		scores = new ArrayList<Integer>();
+	}
+	
+	public addScore(int e) {
+		scores.add(e);
+	}
+}

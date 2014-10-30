@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Player {
+	private String name;
+	private ArrayList<Game> games;
+	private HashMap<Game, Integer> scores;
+	
+	public Player(String name) 
+	{
+		this.name = name;
+		games = new ArrayList<Game>();
+	}
+	
+	public void addGame(Game game) {
+		games.add(game);
+	}
+	
+	public void putScore() {
+		
+	}
+	
+	public String getName() {
+		return name;
+	}
+}
