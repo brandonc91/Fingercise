@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Player {
+	private String name;
+	private ArrayList<Game> gamesPlayed;
+	private HashMap<Game, ArrayList<Integer>> scores;
+	
+	public Player(String name) 
+	{
+		this.name = name;
+		gamesPlayed = new ArrayList<Game>();
+	}
+	
+	public void addGame(Game game) {
+		gamesPlayed.add(game);
+	}
+	
+	public void putScore(int score, Game game) {
+		if (gamesPlayed.contains(game)) {
+			game.addScore(this, score);
+		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+}

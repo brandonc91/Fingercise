@@ -1,0 +1,9 @@
+
+public class Statistics {
+	
+	private Game game;
+	
+	public Statistics(Game game) {
+		this.game = game;
+	}
+}

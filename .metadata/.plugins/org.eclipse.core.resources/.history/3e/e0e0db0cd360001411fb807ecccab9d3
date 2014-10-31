@@ -1,0 +1,58 @@
+import java.util.*;
+
+
+/*
+ * Game class creates a data structure for storing information about a 
+ * mini-game and its attributes like the game name, scores and max score
+ */
+public class Game {
+	private String gameName;
+	private HashMap<Player, PriorityQueue<Integer> > scoreList;
+	private PriorityQueue<Integer> allScoreList;
+	public int maxScore;
+	
+	/*
+	 * Creates a Game object with a name, empty score list and max score of 0
+	 * @param gameName the game title
+	 */
+	public Game(String gameName) {
+		this.gameName = gameName;
+		
+		scoreList = new HashMap<Player, PriorityQueue<Integer>>();
+		allScoreList = new PriorityQueue<Integer>();
+		maxScore = 0;
+	}
+	
+	/*
+	 * Adds an individual's score to the game score list
+	 * @param one The Player who has achieved the score
+	 * @param e the Score the player has achieved
+	 */
+	public void updatePlayerScoreList(Player player, int score) {
+		allScoreList.add(score);
+		player.addScore(score);
+		scoreList.put(player, player.getPlayerScoreList());
+	}
+	
+	public int findHighScore() {
+		return allScoreList.peek();
+	}
+	
+	/*
+	 * getName()
+	 * @return the name of the Game object
+	 */
+	public String getName() {
+		return gameName;
+	}
+	
+	
+	public static void main(String[] args) {
+		Game test = new Game("Test Game");
+		Player playerTest = new Player("Brandon");
+		for (int i = 10; i > 0; i--) {
+			test.updatePlayerScoreList(playerTest, i * 2);
+		}
+		System.out.println("Max? : " + test.findHighScore());
+	}
+}

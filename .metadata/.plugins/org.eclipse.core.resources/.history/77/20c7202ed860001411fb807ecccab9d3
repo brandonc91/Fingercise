@@ -1,0 +1,22 @@
+
+public class Statistics {
+	
+	private Player player;
+	
+	public Statistics(Player thePlayer) {
+		this.player = thePlayer;
+	}
+	
+	public int userHighScore() {
+		
+		
+		
+		return 0;
+	}
+	
+	public void overallHighScore() {}
+	
+	public void overallAverageScore() {}
+	
+	public void userAverageScoreByTimePeriod() {}
+}

@@ -63,4 +63,8 @@ public final class MyServer extends Thread {
 			System.out.println("Member registered!");
 		}
 	}
+	
+	
+	
+	
 }

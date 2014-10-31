@@ -1,0 +1,17 @@
+
+public class Statistics {
+	
+	private Player player;
+	
+	public Statistics(Player thePlayer) {
+		this.player = thePlayer;
+	}
+	
+	public void userHighScore() {}
+	
+	public void overallHighScore() {}
+	
+	public void overallAverageScore() {}
+	
+	public void userAverageScoreByTimePeriod() {}
+}

@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
+public class Player {
+	private String name;
+	private PriorityQueue<Integer> scores;
+	public final int SCORE_LIST_MAX = 50; // maximum count of scores per game
+	public Player(String name) 
+	{
+		this.name = name;
+		scores = new PriorityQueue<Integer>();
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void addScore(int score) {
+		scores.add(score);
+	}
+	
+	public int getHighScore() {
+		return 0;
+	}
+	
+	public PriorityQueue<Integer> getPlayerScoreList() {
+		return scores;
+	}
+}

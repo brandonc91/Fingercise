@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
+public class Player {
+	private String name;
+	private PriorityQueue<Integer> scores;
+	public Player(String name) 
+	{
+		this.name = name;
+		scores = new PriorityQueue<Integer>();
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void addScore(int score) {
+		scores.add(score);
+	}
+	
+	public PriorityQueue<Integer> getPlayerScoreList() {
+		int max = scores.peek();
+		return scores;
+	}
+}
