@@ -23,10 +23,9 @@ public class Player {
 		scores.add(score);
 	}
 	
-	public int getHighScore() {
-		return scores.peek();
-	}
-	
+	/*
+	 * Used to store scores temporarily before putting into hash map in game object
+	 */
 	public PriorityQueue<Integer> getPlayerScoreList() {
 		return scores;
 	}

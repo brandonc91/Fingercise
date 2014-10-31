@@ -35,9 +35,22 @@ public class Game {
 		scoreList.put(player, player.getPlayerScoreList());		// put update player score list in map
 	}
 	
+	public PriorityQueue<Integer> returnPlayerScores(Player player) {
+		return scoreList.get(player);
+	}
+	
 	
 	public int findHighScore() {
 		return maxScore;
+	}
+	
+	public double averageScore() {
+		double average = 0.0;
+		for (int score : allScores) {
+			average += score;
+		}
+		average /= allScores.size();
+		return average;
 	}
 	
 	/*
@@ -64,5 +77,6 @@ public class Game {
 			System.out.println(score);
 		}
 		System.out.println("Max: " + test.findHighScore());
+		System.out.println("Average: " + test.averageScore());
 	}
 }
