@@ -9,29 +9,84 @@
 #import "RegisterViewController.h"
 
 @interface RegisterViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *firstNameField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameField;
+@property (weak, nonatomic) IBOutletCollection(UITextField) NSArray *nameFields;
+- (IBAction)saveChanges:(id)sender;
 
 @end
 
 @implementation RegisterViewController
+- (NSString *) dataFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSString *filePath = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSArray *array = [[NSArray alloc] initWithContentsOfFile:filePath];
+        for (int i = 0; i < 2; i++) {
+            UITextField *theField = self.nameFields[i];
+            theField.text = array[i];
+        }
+    }
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:app];
+    
 }
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    NSString *filePath = [self dataFilePath];
+    NSArray *array = [self.nameFields valueForKey:@"text"];
+    [array writeToFile:filePath atomically:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)textFieldDoneEditing:(id)sender {
+    [sender resignFirstResponder];
 }
-*/
+
+
+
+- (IBAction)saveChanges:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Save changes?" delegate:self cancelButtonTitle:@"No thanks" destructiveButtonTitle:@"Yes please" otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != [actionSheet cancelButtonIndex]) {
+        NSString *msg = nil;
+        [self applicationWillResignActive:(NSNotification *)nil];
+        
+        
+        if ([self.firstNameField.text length] > 0) {
+            msg = [NSString stringWithFormat:@"Congrats %@, changes saved.", self.firstNameField.text];
+        }
+        else msg = [NSString stringWithFormat:@"Changes saved."];
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Changes saved." message:msg delegate:self cancelButtonTitle:@"Cool." otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 
 @end
