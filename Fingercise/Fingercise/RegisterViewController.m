@@ -77,6 +77,7 @@
     [dataString appendString:_lastNameField.text];
     StatsViewController *statsViewController = [[StatsViewController alloc] init];
     statsViewController.data = dataString;
+    [self.navigationController pushViewController:statsViewController animated:YES];
     
     
 }

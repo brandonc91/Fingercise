@@ -13,4 +13,5 @@
 #include <netdb.h>
 @interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, copy) NSArray *listData;
-@property (nonatomic, retain) NSString *data;@end
+@property (nonatomic, retain) NSString *data;
+@end

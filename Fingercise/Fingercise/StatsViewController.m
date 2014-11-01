@@ -7,6 +7,7 @@
 //
 
 #import "StatsViewController.h"
+
 CFSocketNativeHandle sock;
 UInt8 buffer[1024];
 
@@ -38,6 +39,9 @@ void ConnectCallBack(
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   /* 
+    Modify for custom messages
+    
     NSString *message = [NSString stringWithFormat:@"statistics:%@",_data];
     
     NSUInteger length = [message length];
@@ -47,8 +51,9 @@ void ConnectCallBack(
     for (NSUInteger i = 0; i < length; i++) {
         msg[i] = strbuffer[i];
     }
+    */
 
-    
+    char msg[] = "register:Brandon Cruz\n";
     /* Build our socket context; this ties the joke to the socket */
     CFSocketContext context = { 0, msg, NULL, NULL, NULL } ;
     

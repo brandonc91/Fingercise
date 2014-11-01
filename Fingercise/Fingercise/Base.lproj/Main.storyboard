@@ -90,6 +90,9 @@
                                 <state key="normal" title="Frog">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="beginGame:" destination="9ct-jV-8nY" eventType="touchUpInside" id="UpM-BT-qcQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iPz-uA-yVq">
                                 <rect key="frame" x="143" y="208" width="30" height="30"/>
@@ -105,10 +108,47 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fly" id="Aft-gR-6mp">
+                                <rect key="frame" x="169" y="64" width="65" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vsE-2d-ZuR">
+                                <rect key="frame" x="48" y="184" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M0r-It-xac">
+                                <rect key="frame" x="48" y="233" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Hj-UP-y4J">
+                                <rect key="frame" x="120" y="427" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Again?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginGame:" destination="9ct-jV-8nY" eventType="touchUpInside" id="2XI-ru-VKk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exercise" image="exercise" id="aaz-1p-4T4"/>
+                    <connections>
+                        <outlet property="colorButton" destination="ohy-Tz-cGC" id="OmO-BN-h5y"/>
+                        <outlet property="endGame" destination="M0r-It-xac" id="CaM-7z-8af"/>
+                        <outlet property="flyImage" destination="Aft-gR-6mp" id="k4R-sw-4Rj"/>
+                        <outlet property="frogButton" destination="vmQ-rq-rHu" id="Grt-sF-jgP"/>
+                        <outlet property="playAgainButton" destination="8Hj-UP-y4J" id="cft-8E-tg3"/>
+                        <outlet property="starButton" destination="iPz-uA-yVq" id="D2W-Td-CL2"/>
+                        <outlet property="startGame" destination="vsE-2d-ZuR" id="NLL-8t-D87"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5s2-4Q-Aiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,6 +199,7 @@
     </scenes>
     <resources>
         <image name="exercise" width="30" height="30"/>
+        <image name="fly" width="1111" height="1149"/>
         <image name="person" width="29" height="30"/>
         <image name="statistics" width="30" height="30"/>
     </resources>

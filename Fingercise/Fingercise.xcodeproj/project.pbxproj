@@ -446,6 +446,7 @@
 				CA1902B31A0403F7006BEF41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA1902B41A0403F7006BEF41 /* Build configuration list for PBXNativeTarget "FingerciseTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +455,7 @@
 				CA1902B61A0403F7006BEF41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
