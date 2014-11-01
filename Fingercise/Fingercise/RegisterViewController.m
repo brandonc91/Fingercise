@@ -7,11 +7,13 @@
 //
 
 #import "RegisterViewController.h"
+#import "StatsViewController.h"
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutletCollection(UITextField) NSArray *nameFields;
+
 - (IBAction)saveChanges:(id)sender;
 
 @end
@@ -61,11 +63,22 @@
 }
 
 
-
+/*
+ * Saves changes to persistent data structure within application and sends 
+ * name data to StatsViewController for calculating statistics on server
+ * Sends data to StatsViewController after actionsheet is presented
+ */
 - (IBAction)saveChanges:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"Save changes?" delegate:self cancelButtonTitle:@"No thanks" destructiveButtonTitle:@"Yes please" otherButtonTitles:nil];
     [actionSheet showInView:self.view];
+    NSMutableString *dataString = [[NSMutableString alloc] init];
+    [dataString appendString:_firstNameField.text];
+    [dataString appendString:_lastNameField.text];
+    StatsViewController *statsViewController = [[StatsViewController alloc] init];
+    statsViewController.data = dataString;
+    
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet

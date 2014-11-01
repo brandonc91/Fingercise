@@ -38,8 +38,16 @@ void ConnectCallBack(
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *message = [NSString stringWithFormat:@"statistics:%@",_data];
     
-    char msg[] = "register:Brandon Cruz\n";
+    NSUInteger length = [message length];
+    char msg[length];
+    unichar strbuffer[length];
+    [message getCharacters:strbuffer range:NSMakeRange(0, length)];
+    for (NSUInteger i = 0; i < length; i++) {
+        msg[i] = strbuffer[i];
+    }
+
     
     /* Build our socket context; this ties the joke to the socket */
     CFSocketContext context = { 0, msg, NULL, NULL, NULL } ;
@@ -51,7 +59,7 @@ void ConnectCallBack(
     struct hostent *hp;
     CFDataRef addressData;
     
-    theName.sin_port = htons(8889);
+    theName.sin_port = htons(7890);
     theName.sin_family = AF_INET;
     
     hp = gethostbyname("localhost");

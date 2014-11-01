@@ -12,30 +12,30 @@
 #import "RegisterViewController.h"
 
 
-
-CFSocketNativeHandle sock;
-UInt8 buffer[1024];
-
-void ConnectCallBack(
-                     CFSocketRef socket,
-                     CFSocketCallBackType type,
-                     CFDataRef address,
-                     const void *data,
-                     void *info)
-{
-    sock = CFSocketGetNative(socket);
-    char *msg = info;
-    
-    NSLog(@"%s\n", msg);
-    
-    send(sock, msg, strlen(msg) + 1, 0);
-    NSLog(@"Sent Message\n");
-    recv(sock, buffer, sizeof(buffer), 0); // If we wanted to write we could use
-    NSLog(@"Got: %s \n", buffer);
-    
-    CFRunLoopStop(CFRunLoopGetCurrent());
-    return;
-}
+//
+//CFSocketNativeHandle sock;
+//UInt8 buffer[1024];
+//
+//void ConnectCallBack(
+//                     CFSocketRef socket,
+//                     CFSocketCallBackType type,
+//                     CFDataRef address,
+//                     const void *data,
+//                     void *info)
+//{
+//    sock = CFSocketGetNative(socket);
+//    char *msg = info;
+//    
+//    NSLog(@"%s\n", msg);
+//    
+//    send(sock, msg, strlen(msg) + 1, 0);
+//    NSLog(@"Sent Message\n");
+//    recv(sock, buffer, sizeof(buffer), 0); // If we wanted to write we could use
+//    NSLog(@"Got: %s \n", buffer);
+//    
+//    CFRunLoopStop(CFRunLoopGetCurrent());
+//    return;
+//}
 
 @interface ViewController ()
 
