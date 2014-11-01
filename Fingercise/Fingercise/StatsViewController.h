@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface StatsViewController : UIViewController
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+@interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, copy) NSArray *listData;
 
 @end
